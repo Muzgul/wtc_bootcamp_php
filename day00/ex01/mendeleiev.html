@@ -1,0 +1,721 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>mendeleiev</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                background: darkslategray;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .header {
+                width: 30vw;
+                margin: 10vw auto;
+                text-align: center;
+            }
+            .header > img{
+                width: 20vw;
+            }
+            .header > h1{
+                color: darkgray;
+                font-weight: lighter;
+                font-size: 3vw;
+            }
+            .ptable{
+                position: relative;
+                margin-left: 3.5vw;
+            }
+            .ptable2{
+                position: relative;
+                top: 40vw;
+                margin-left: 3.5vw;
+            }
+            .item {
+                font-size: 1vw;
+                width: 5vw;
+                height: 5vw;
+                background: darkcyan;
+                position: absolute;
+                border: solid darkslategray 1px;
+            }
+            .item > span{
+                position: absolute;
+                display: block;
+            }
+            .item-num{
+                height: 1vw;
+                top: 4vw;
+                left: 0;
+                font-weight: lighter;
+                transform: translateX(20%) translateY(-25%);
+            }
+            .item-name{
+                top: 2.5vw;
+                transform: translateY(-50%);
+                width: 100%;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.2vw;
+            }
+            .item-atom{
+                text-align: right;
+                width: 5vw;
+                left: 0;
+                transform: translateX(-10%) translateY(25%);
+                font-weight: lighter;
+            }
+            .green{
+                background: darkturquoise;
+            }
+            .orange{
+                background: darkcyan;
+            }
+            .yellow{
+                background: darkgray;
+            }
+            .pink{
+                background: darkseagreen;
+            }
+            .lblue{
+                background: darkslategray;
+            }
+            .dblue
+            {
+                background: darkslateblue;
+            }
+            .lgreen{
+                background: darkgreen;
+            }
+            .grey{
+                background: dimgray;
+            }
+            .col-1{ left: 0; }
+            .col-2{ left: 5vw; }
+            .col-3{ left: 10vw; }
+            .col-4{ left: 15vw; }
+            .col-5{ left: 20vw; }
+            .col-6{ left: 25vw; }
+            .col-7{ left: 30vw; }
+            .col-8{ left: 35vw; }
+            .col-9{ left: 40vw; }
+            .col-10{ left: 45vw; }
+            .col-11{ left: 50vw; }
+            .col-12{ left: 55vw; }
+            .col-13{ left: 60vw; }
+            .col-14{ left: 65vw; }
+            .col-15{ left: 70vw; }
+            .col-16{ left: 75vw; }
+            .col-17{ left: 80vw; }
+            .col-18{ left: 85vw; }
+            .row-1{ top: 0; }
+            .row-2{ top: 5vw; }
+            .row-3{ top: 10vw; }
+            .row-4{ top: 15vw; }
+            .row-5{ top: 20vw; }
+            .row-6{ top: 25vw; }
+            .row-7{ top: 30vw; }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <img src="data:image/jpeg;base64,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" alt="Dimitri">
+            <h1>PERIODIC TABLE</h1>
+        </div> 
+        <div class="ptable" >
+            <div class="item col-1 row-1 green">
+                <span class="item-num">1</span>
+                <span class="item-name">H</span>
+                <span class="item-atom">1.008</span>
+            </div>
+            <div class="item col-1 row-2 orange">
+                <span class="item-num">3</span>
+                <span class="item-name">Li</span>
+                <span class="item-atom">6.94</span>
+            </div>
+            <div class="item col-1 row-3 orange">
+                <span class="item-num">11</span>
+                <span class="item-name">Na</span>
+                <span class="item-atom">22.990</span>
+            </div>
+            <div class="item col-1 row-4 orange">
+                <span class="item-num">19</span>
+                <span class="item-name">K</span>
+                <span class="item-atom">39.098</span>
+            </div>
+            <div class="item col-1 row-5 orange">
+                <span class="item-num">37</span>
+                <span class="item-name">Rb</span>
+                <span class="item-atom">85.468</span>
+            </div>
+            <div class="item col-1 row-6 orange">
+                <span class="item-num">55</span>
+                <span class="item-name">Cs</span>
+                <span class="item-atom">132.91</span>
+            </div>
+            <div class="item col-1 row-7 orange">
+                <span class="item-num">87</span>
+                <span class="item-name">Fr</span>
+                <span class="item-atom">(223)</span>
+            </div>
+            <div class="item col-2 row-2 yellow">
+                <span class="item-num">4</span>
+                <span class="item-name">Be</span>
+                <span class="item-atom">9.0122</span>
+            </div>
+            <div class="item col-2 row-3 yellow">
+                <span class="item-num">12</span>
+                <span class="item-name">Mg</span>
+                <span class="item-atom">24.305</span>
+            </div>
+            <div class="item col-2 row-4 yellow">
+                <span class="item-num">20</span>
+                <span class="item-name">Ca</span>
+                <span class="item-atom">40.078</span>
+            </div>
+            <div class="item col-2 row-5 yellow">
+                <span class="item-num">38</span>
+                <span class="item-name">Sr</span>
+                <span class="item-atom">87.62</span>
+            </div>
+            <div class="item col-2 row-6 yellow">
+                <span class="item-num">56</span>
+                <span class="item-name">Ba</span>
+                <span class="item-atom">137.33</span>
+            </div>
+            <div class="item col-2 row-7 yellow">
+                <span class="item-num">88</span>
+                <span class="item-name">Ra</span>
+                <span class="item-atom">(226)</span>
+            </div>
+            <div class="item col-3 row-4 pink">
+                <span class="item-num">21</span>
+                <span class="item-name">Sc</span>
+                <span class="item-atom">44.956</span>
+            </div>
+            <div class="item col-3 row-5 pink">
+                <span class="item-num">39</span>
+                <span class="item-name">Y</span>
+                <span class="item-atom">88.906</span>
+            </div>
+            <div class="item col-3 row-6 pink">
+                <span class="item-num"></span>
+                <span class="item-name">57-71</span>
+                <span class="item-atom"></span>
+            </div>
+            <div class="item col-3 row-7 pink">
+                <span class="item-num"></span>
+                <span class="item-name">89-103</span>
+                <span class="item-atom"></span>
+            </div>
+            <div class="item col-4 row-4 pink">
+                <span class="item-num">22</span>
+                <span class="item-name">Ti</span>
+                <span class="item-atom">47.867</span>
+            </div>
+            <div class="item col-4 row-5 pink">
+                <span class="item-num">40</span>
+                <span class="item-name">Zr</span>
+                <span class="item-atom">91.224</span>
+            </div>
+            <div class="item col-4 row-6 pink">
+                <span class="item-num">72</span>
+                <span class="item-name">Hf</span>
+                <span class="item-atom">178.49</span>
+            </div>
+            <div class="item col-4 row-7 pink">
+                <span class="item-num">104</span>
+                <span class="item-name">Rf</span>
+                <span class="item-atom">(267)</span>
+            </div>
+            <div class="item col-5 row-4 pink">
+                <span class="item-num">23</span>
+                <span class="item-name">V</span>
+                <span class="item-atom">50.942</span>
+            </div>
+            <div class="item col-5 row-5 pink">
+                <span class="item-num">41</span>
+                <span class="item-name">Nb</span>
+                <span class="item-atom">92.906</span>
+            </div>
+            <div class="item col-5 row-6 pink">
+                <span class="item-num">73</span>
+                <span class="item-name">Ta</span>
+                <span class="item-atom">180.95</span>
+            </div>
+            <div class="item col-5 row-7 pink">
+                <span class="item-num">105</span>
+                <span class="item-name">Db</span>
+                <span class="item-atom">(268)</span>
+            </div>
+            <div class="item col-6 row-4 pink">
+                <span class="item-num">24</span>
+                <span class="item-name">Cr</span>
+                <span class="item-atom">51.996</span>
+            </div>
+            <div class="item col-6 row-5 pink">
+                <span class="item-num">42</span>
+                <span class="item-name">Mo</span>
+                <span class="item-atom">95.95</span>
+            </div>
+            <div class="item col-6 row-6 pink">
+                <span class="item-num">74</span>
+                <span class="item-name">W</span>
+                <span class="item-atom">183.84</span>
+            </div>
+            <div class="item col-6 row-7 pink">
+                <span class="item-num">106</span>
+                <span class="item-name">Sg</span>
+                <span class="item-atom">(269)</span>
+            </div>
+            <div class="item col-7 row-4 pink">
+                <span class="item-num">25</span>
+                <span class="item-name">Mn</span>
+                <span class="item-atom">54.938</span>
+            </div>
+            <div class="item col-7 row-5 pink">
+                <span class="item-num">43</span>
+                <span class="item-name">Tc</span>
+                <span class="item-atom">(98)</span>
+            </div>
+            <div class="item col-7 row-6 pink">
+                <span class="item-num">75</span>
+                <span class="item-name">Re</span>
+                <span class="item-atom">186.21</span>
+            </div>
+            <div class="item col-7 row-7 pink">
+                <span class="item-num">107</span>
+                <span class="item-name">Bh</span>
+                <span class="item-atom">(270)</span>
+            </div>
+            <div class="item col-8 row-4 pink">
+                <span class="item-num">26</span>
+                <span class="item-name">Fe</span>
+                <span class="item-atom">55.845</span>
+            </div>
+            <div class="item col-8 row-5 pink">
+                <span class="item-num">44</span>
+                <span class="item-name">Ru</span>
+                <span class="item-atom">101.07</span>
+            </div>
+            <div class="item col-8 row-6 pink">
+                <span class="item-num">76</span>
+                <span class="item-name">Os</span>
+                <span class="item-atom">190.23</span>
+            </div>
+            <div class="item col-8 row-7 pink">
+                <span class="item-num">108</span>
+                <span class="item-name">Hs</span>
+                <span class="item-atom">(277)</span>
+            </div>
+            <div class="item col-9 row-4 pink">
+                <span class="item-num">27</span>
+                <span class="item-name">Co</span>
+                <span class="item-atom">58.933</span>
+            </div>
+            <div class="item col-9 row-5 pink">
+                <span class="item-num">45</span>
+                <span class="item-name">Rh</span>
+                <span class="item-atom">102.91</span>
+            </div>
+            <div class="item col-9 row-6 pink">
+                <span class="item-num">77</span>
+                <span class="item-name">Ir</span>
+                <span class="item-atom">192.22</span>
+            </div>
+            <div class="item col-9 row-7 grey">
+                <span class="item-num">109</span>
+                <span class="item-name">Mt</span>
+                <span class="item-atom">(278)</span>
+            </div>
+            <div class="item col-10 row-4 pink">
+                <span class="item-num">28</span>
+                <span class="item-name">Ni</span>
+                <span class="item-atom">58.693</span>
+            </div>
+            <div class="item col-10 row-5 pink">
+                <span class="item-num">46</span>
+                <span class="item-name">Pd</span>
+                <span class="item-atom">106.42</span>
+            </div>
+            <div class="item col-10 row-6 pink">
+                <span class="item-num">78</span>
+                <span class="item-name">Pt</span>
+                <span class="item-atom">195.08</span>
+            </div>
+            <div class="item col-10 row-7 grey">
+                <span class="item-num">110</span>
+                <span class="item-name">Ds</span>
+                <span class="item-atom">(281)</span>
+            </div>
+            <div class="item col-11 row-4 pink">
+                <span class="item-num">29</span>
+                <span class="item-name">Cu</span>
+                <span class="item-atom">63.546</span>
+            </div>
+            <div class="item col-11 row-5 pink">
+                <span class="item-num">47</span>
+                <span class="item-name">Ag</span>
+                <span class="item-atom">107.87</span>
+            </div>
+            <div class="item col-11 row-6 pink">
+                <span class="item-num">79</span>
+                <span class="item-name">Au</span>
+                <span class="item-atom">196.97</span>
+            </div>
+            <div class="item col-11 row-7 grey">
+                <span class="item-num">111</span>
+                <span class="item-name">Rg</span>
+                <span class="item-atom">(282)</span>
+            </div>
+            <div class="item col-12 row-4 pink">
+                <span class="item-num">30</span>
+                <span class="item-name">Zn</span>
+                <span class="item-atom">65.38</span>
+            </div>
+            <div class="item col-12 row-5 pink">
+                <span class="item-num">48</span>
+                <span class="item-name">Cd</span>
+                <span class="item-atom">112.41</span>
+            </div>
+            <div class="item col-12 row-6 pink">
+                <span class="item-num">80</span>
+                <span class="item-name">Hg</span>
+                <span class="item-atom">200.59</span>
+            </div>
+            <div class="item col-12 row-7 pink">
+                <span class="item-num">112</span>
+                <span class="item-name">Cn</span>
+                <span class="item-atom">(285)</span>
+            </div>
+            <div class="item col-13 row-2 lgreen">
+                <span class="item-num">5</span>
+                <span class="item-name">B</span>
+                <span class="item-atom">10.81</span>
+            </div>
+            <div class="item col-13 row-3 lblue">
+                <span class="item-num">13</span>
+                <span class="item-name">Al</span>
+                <span class="item-atom">26.982</span>
+            </div>
+            <div class="item col-13 row-4 lblue">
+                <span class="item-num">31</span>
+                <span class="item-name">Ga</span>
+                <span class="item-atom">69.723</span>
+            </div>
+            <div class="item col-13 row-5 lblue">
+                <span class="item-num">49</span>
+                <span class="item-name">In</span>
+                <span class="item-atom">114.82</span>
+            </div>
+            <div class="item col-13 row-6 lblue">
+                <span class="item-num">81</span>
+                <span class="item-name">Ti</span>
+                <span class="item-atom">204.38</span>
+            </div>
+            <div class="item col-13 row-7 grey">
+                <span class="item-num">113</span>
+                <span class="item-name">Nh</span>
+                <span class="item-atom">(286)</span>
+            </div>
+            <div class="item col-14 row-2 green">
+                <span class="item-num">6</span>
+                <span class="item-name">C</span>
+                <span class="item-atom">12.011</span>
+            </div>
+            <div class="item col-14 row-3 lgreen">
+                <span class="item-num">14</span>
+                <span class="item-name">Si</span>
+                <span class="item-atom">28.085</span>
+            </div>
+            <div class="item col-14 row-4 lgreen">
+                <span class="item-num">32</span>
+                <span class="item-name">Ge</span>
+                <span class="item-atom">72.630</span>
+            </div>
+            <div class="item col-14 row-5 lblue">
+                <span class="item-num">50</span>
+                <span class="item-name">Sn</span>
+                <span class="item-atom">118.71</span>
+            </div>
+            <div class="item col-14 row-6 lblue">
+                <span class="item-num">82</span>
+                <span class="item-name">Pb</span>
+                <span class="item-atom">207.2</span>
+            </div>
+            <div class="item col-14 row-7 lblue">
+                <span class="item-num">114</span>
+                <span class="item-name">Fl</span>
+                <span class="item-atom">(289)</span>
+            </div>
+            <div class="item col-15 row-2 green">
+                <span class="item-num">7</span>
+                <span class="item-name">N</span>
+                <span class="item-atom">14.007</span>
+            </div>
+            <div class="item col-15 row-3 green">
+                <span class="item-num">15</span>
+                <span class="item-name">P</span>
+                <span class="item-atom">30.974</span>
+            </div>
+            <div class="item col-15 row-4 lgreen">
+                <span class="item-num">33</span>
+                <span class="item-name">As</span>
+                <span class="item-atom">74.922</span>
+            </div>
+            <div class="item col-15 row-5 lgreen">
+                <span class="item-num">51</span>
+                <span class="item-name">Sb</span>
+                <span class="item-atom">121.76</span>
+            </div>
+            <div class="item col-15 row-6 lblue">
+                <span class="item-num">83</span>
+                <span class="item-name">Bi</span>
+                <span class="item-atom">208.98</span>
+            </div>
+            <div class="item col-15 row-7 grey">
+                <span class="item-num">115</span>
+                <span class="item-name">Mc</span>
+                <span class="item-atom">(290)</span>
+            </div>
+            <div class="item col-16 row-2 green">
+                <span class="item-num">8</span>
+                <span class="item-name">O</span>
+                <span class="item-atom">15.999</span>
+            </div>
+            <div class="item col-16 row-3 green">
+                <span class="item-num">16</span>
+                <span class="item-name">S</span>
+                <span class="item-atom">32.06</span>
+            </div>
+            <div class="item col-16 row-4 green">
+                <span class="item-num">34</span>
+                <span class="item-name">Se</span>
+                <span class="item-atom">78.971</span>
+            </div>
+            <div class="item col-16 row-5 lgreen">
+                <span class="item-num">52</span>
+                <span class="item-name">Te</span>
+                <span class="item-atom">127.60</span>
+            </div>
+            <div class="item col-16 row-6 lblue">
+                <span class="item-num">84</span>
+                <span class="item-name">Po</span>
+                <span class="item-atom">(209)</span>
+            </div>
+            <div class="item col-16 row-7 grey">
+                <span class="item-num">116</span>
+                <span class="item-name">Lv</span>
+                <span class="item-atom">(293)</span>
+            </div>
+            <div class="item col-17 row-2 green">
+                <span class="item-num">9</span>
+                <span class="item-name">F</span>
+                <span class="item-atom">18.998</span>
+            </div>
+            <div class="item col-17 row-3 green">
+                <span class="item-num">17</span>
+                <span class="item-name">Cl</span>
+                <span class="item-atom">35.45</span>
+            </div>
+            <div class="item col-17 row-4 green">
+                <span class="item-num">35</span>
+                <span class="item-name">Br</span>
+                <span class="item-atom">79.904</span>
+            </div>
+            <div class="item col-17 row-5 green">
+                <span class="item-num">53</span>
+                <span class="item-name">I</span>
+                <span class="item-atom">126.90</span>
+            </div>
+            <div class="item col-17 row-6 lgreen">
+                <span class="item-num">85</span>
+                <span class="item-name">At</span>
+                <span class="item-atom">(210)</span>
+            </div>
+            <div class="item col-17 row-7 grey">
+                <span class="item-num">117</span>
+                <span class="item-name">Ts</span>
+                <span class="item-atom">(294)</span>
+            </div>
+            <div class="item col-18 row-1 dblue">
+                <span class="item-num">2</span>
+                <span class="item-name">He</span>
+                <span class="item-atom">4.0026</span>
+            </div>
+            <div class="item col-18 row-2 dblue">
+                <span class="item-num">10</span>
+                <span class="item-name">Ne</span>
+                <span class="item-atom">20.180</span>
+            </div>
+            <div class="item col-18 row-3 dblue">
+                <span class="item-num">18</span>
+                <span class="item-name">Ar</span>
+                <span class="item-atom">39.948</span>
+            </div>
+            <div class="item col-18 row-4 dblue">
+                <span class="item-num">36</span>
+                <span class="item-name">Kr</span>
+                <span class="item-atom">83.978</span>
+            </div>
+            <div class="item col-18 row-5 dblue">
+                <span class="item-num">54</span>
+                <span class="item-name">Xe</span>
+                <span class="item-atom">131.29</span>
+            </div>
+            <div class="item col-18 row-6 dblue">
+                <span class="item-num">86</span>
+                <span class="item-name">Rn</span>
+                <span class="item-atom">(222)</span>
+            </div>
+            <div class="item col-18 row-7 grey">
+                <span class="item-num">118</span>
+                <span class="item-name">Og</span>
+                <span class="item-atom">(294)</span>
+            </div>
+        </div>
+        <div class="ptable2">
+            <div class="item col-1 row-1 orange">
+                <span class="item-num">57</span>
+                <span class="item-name">La</span>
+                <span class="item-atom">138.91</span>
+            </div>
+            <div class="item col-1 row-2 pink">
+                <span class="item-num">89</span>
+                <span class="item-name">Ac</span>
+                <span class="item-atom">(227)</span>
+            </div>
+            <div class="item col-2 row-1 orange">
+                <span class="item-num">58</span>
+                <span class="item-name">Ce</span>
+                <span class="item-atom">140.12</span>
+            </div>
+            <div class="item col-2 row-2 pink">
+                <span class="item-num">90</span>
+                <span class="item-name">Th</span>
+                <span class="item-atom">232.04</span>
+            </div>
+            <div class="item col-3 row-1 orange">
+                <span class="item-num">59</span>
+                <span class="item-name">Pr</span>
+                <span class="item-atom">140.91</span>
+            </div>
+            <div class="item col-3 row-2 pink">
+                <span class="item-num">91</span>
+                <span class="item-name">Pa</span>
+                <span class="item-atom">231.04</span>
+            </div>
+            <div class="item col-4 row-1 orange">
+                <span class="item-num">60</span>
+                <span class="item-name">Nd</span>
+                <span class="item-atom">144.24</span>
+            </div>
+            <div class="item col-4 row-2 pink">
+                <span class="item-num">92</span>
+                <span class="item-name">U</span>
+                <span class="item-atom">238.03</span>
+            </div>
+            <div class="item col-5 row-1 orange">
+                <span class="item-num">61</span>
+                <span class="item-name">Pm</span>
+                <span class="item-atom">(145)</span>
+            </div>
+            <div class="item col-5 row-2 pink">
+                <span class="item-num">93</span>
+                <span class="item-name">Pu</span>
+                <span class="item-atom">(244)</span>
+            </div>
+            <div class="item col-6 row-1 orange">
+                <span class="item-num">62</span>
+                <span class="item-name">Sm</span>
+                <span class="item-atom">150.36</span>
+            </div>
+            <div class="item col-6 row-2 pink">
+                <span class="item-num">94</span>
+                <span class="item-name">Pu</span>
+                <span class="item-atom">(244)</span>
+            </div>
+            <div class="item col-7 row-1 orange">
+                <span class="item-num">63</span>
+                <span class="item-name">Eu</span>
+                <span class="item-atom">151.96</span>
+            </div>
+            <div class="item col-7 row-2 pink">
+                <span class="item-num">95</span>
+                <span class="item-name">Am</span>
+                <span class="item-atom">(243)</span>
+            </div>
+            <div class="item col-8 row-1 orange">
+                <span class="item-num">64</span>
+                <span class="item-name">Gd</span>
+                <span class="item-atom">157.25</span>
+            </div>
+            <div class="item col-8 row-2 pink">
+                <span class="item-num">96</span>
+                <span class="item-name">Cm</span>
+                <span class="item-atom">(247)</span>
+            </div>
+            <div class="item col-9 row-1 orange">
+                <span class="item-num">65</span>
+                <span class="item-name">Tb</span>
+                <span class="item-atom">158.93</span>
+            </div>
+            <div class="item col-9 row-2 pink">
+                <span class="item-num">97</span>
+                <span class="item-name">Bk</span>
+                <span class="item-atom">(247)</span>
+            </div>
+            <div class="item col-10 row-1 orange">
+                <span class="item-num">66</span>
+                <span class="item-name">Dy</span>
+                <span class="item-atom">162.50</span>
+            </div>
+            <div class="item col-10 row-2 pink">
+                <span class="item-num">98</span>
+                <span class="item-name">Cf</span>
+                <span class="item-atom">(251)</span>
+            </div>
+            <div class="item col-11 row-1 orange">
+                <span class="item-num">67</span>
+                <span class="item-name">Ho</span>
+                <span class="item-atom">164.93</span>
+            </div>
+            <div class="item col-11 row-2 pink">
+                <span class="item-num">99</span>
+                <span class="item-name">Es</span>
+                <span class="item-atom">(252)</span>
+            </div>
+            <div class="item col-12 row-1 orange">
+                <span class="item-num">69</span>
+                <span class="item-name">Tm</span>
+                <span class="item-atom">168.93</span>
+            </div>
+            <div class="item col-12 row-2 pink">
+                <span class="item-num">101</span>
+                <span class="item-name">Md</span>
+                <span class="item-atom">(258)</span>
+            </div>
+            <div class="item col-13 row-1 orange">
+                <span class="item-num">70</span>
+                <span class="item-name">Yb</span>
+                <span class="item-atom">173.05</span>
+            </div>
+            <div class="item col-13 row-2 pink">
+                <span class="item-num">102</span>
+                <span class="item-name">No</span>
+                <span class="item-atom">(259)</span>
+            </div>
+            <div class="item col-14 row-1 orange">
+                <span class="item-num">71</span>
+                <span class="item-name">Lu</span>
+                <span class="item-atom">174.97</span>
+            </div>
+            <div class="item col-14 row-2 pink">
+                <span class="item-num">103</span>
+                <span class="item-name">Lr</span>
+                <span class="item-atom">(266)</span>
+            </div>
+        </div>
+    </body>
+</html>
