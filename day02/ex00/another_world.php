@@ -1,26 +1,19 @@
+#!/usr/bin/php
 <?php
-	$output = [];
 	if ($argc > 1)
 	{
-		$str = $argv[1];
-		$sparr = explode(' ', $str);
-		foreach ($sparr as $key => $value) {
-			$value = trim($value);
-			if (strlen($value) > 0)
+		$output = 0;
+		$arr = preg_split('/\s+/', $argv[1]);
+		foreach ($arr as $key => $value) {
+			if (strlen($value) > 1)
 			{
-				$tbarr = explode('\t', $value);
-				foreach ($tbarr as $key => $value) {
-					$value = trim($value);
-					if (strlen($value) > 0)
-						array_push($output, $value);
-				}
+				$output++;
+				if ($key != 0)
+					echo " ";
+				echo $value;
 			}
 		}
-		foreach ($output as $key => $value) {
-			if ($key != 0)
-				echo " ";
-			echo $value;
-		}
-		echo "\n";
+		if ($output > 0)
+			echo "\n";
 	}
 ?>
