@@ -2,7 +2,6 @@
 <?php
 	date_default_timezone_set("Europe/Paris");
 	$bin = file_get_contents("/var/run/utmpx");
-	// echo $bin;
 	$user = get_current_user();
 	$who = [];
 	while ($bin)
@@ -12,7 +11,7 @@
 		{
 			$month = date("M", $arr[sec]);
 			$day = date("j", $arr[sec]);
-			$time = date("h:i", $arr[sec]);
+			$time = date("H:i", $arr[sec]);
 			$entry = array($arr[user], $arr[line], $month, $day, $time);
 			array_push($who, $entry);
 		}

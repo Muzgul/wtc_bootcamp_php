@@ -50,11 +50,7 @@
                     fclose($fp);
                 }
             }
-            else
-                echo "No images on site!\n";
         }
-        else
-            echo "Can't connect to url: " . $argv[1] . "\n";
         unlink("temp.txt");
     } 
 ?>

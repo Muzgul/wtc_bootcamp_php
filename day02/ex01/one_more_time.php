@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
-    $regexf = "/(Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche) ([1-3][0-9]|[0-9]) (Janvier|Fevrier|Mars|Avril|Mai|Juin|Juillet|Aout|Septembre|Octobre|Novembre|Decembre) (19[7-9][0-9]|200[0-9]|201[0-8]) ([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])/s";
-    $regexe = "/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) ([1-3][0-9]|[0-9]) (January|February|March|April|May|June|July|August|September|October|November|December) (19[7-9][0-9]|200[0-9]|201[0-8]) ([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])/s";
+    $regexf = "/(Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche) ([1-3][0-9]|[1-9]|0[1-9]) (Janvier|Fevrier|Mars|Avril|Mai|Juin|Juillet|Aout|Septembre|Octobre|Novembre|Decembre) (19[7-9][0-9]|200[0-9]|201[0-8]) ([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])/s";
+    $regexe = "/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) ([1-3][0-9]|[1-9]|0[1-9]) (January|February|March|April|May|June|July|August|September|October|November|December) (19[7-9][0-9]|200[0-9]|201[0-8]) ([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])/s";
     $marrf = array("Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre");
     $marre = array("January","February","March","April","May","June","July","August","September","October","November","December");
     $darrf = array("Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche");

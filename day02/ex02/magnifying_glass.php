@@ -27,7 +27,5 @@
 			}
 			echo $output;
 		}
-		else
-			echo "File not found!\n";
 	}
 ?>
