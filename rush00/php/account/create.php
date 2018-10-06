@@ -15,7 +15,7 @@
 			if ($match == 0)
 				array_push($arr, $usr);
 			else
-				$message = "ERROR\n";
+				$message = "Username has been taken\n";
 		}
 		else
 		{
@@ -27,6 +27,6 @@
 			file_put_contents($root . "/private/passwd", serialize($arr)) . "\n";
 	}
 	else
-		$message = "ERROR\n";
+		$message = "Incorrect values!\nLogin: " . $_POST['login'] . "\nPasswd: " . $_POST['passwd'] . "\nSubmit: " . $_POST['submit'] . "\n";
 	echo $message;
 ?>
