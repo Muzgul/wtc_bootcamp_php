@@ -1,0 +1,29 @@
+
+<- Color ----------------------------------------------------------------------
+
+The Color class is designed to hangle Vertex (X Y Z) coordinates.
+
+__constuct( Array() )
+The class will be instantiated by an array of values. This can occur in 3 ways:
+    - An Array() with 3 values representing the (X Y Z) coordinates as doubles;
+        Array( 'x' => (bouble), 'y' => (double), 'z' => (double) )
+    - An Array() with the coordinates and 'w' or a Color object;
+        Array( 'x' => (bouble), 'y' => (double), 'z' => (double), 'w' => (double) )
+        OR
+        Array( 'x' => (bouble), 'y' => (double), 'z' => (double), 'color' => Color )
+    - An Array() with all values mentioned above:
+        Array( 'x' => (bouble), 'y' => (double), 'z' => (double), 'w' => (double), 'color' => Color )
+    ( Setting the Vertex::$verbose to TRUE will prompt a print of this construction. )
+
+__destruct( void )
+The class will be destructed as pre standard.
+    ( Setting the Vertex::$verbose to TRUE will prompt a print of this destruction. )
+
+__toString( void )
+An object of this class will be printed in the following format:
+    "Vertex ( x: 0.00, y: 0.00, z: 0.00, w: 0.00, Color( red:  255, green:  255, blue:  255 ) )"
+
+Vertex::doc( void )
+The documentation for this class will be returned in string format.
+
+---------------------------------------------------------------------- Color ->
