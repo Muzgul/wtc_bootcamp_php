@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            setInterval(function (){alert("Please, use me ...");}, 30000)
+            $("#calc").on("click", function(){
+                var lhs = parseInt($("#lhs").val());
+                var rhs = parseInt($("#rhs").val());
+                var op = $("#operator").val();
+                if (isNaN(lhs) || isNaN(rhs) || lhs < 0 || rhs < 0){
+                    alert("Error :(");
+                }else{
+                    var res = "";
+                    if (op == "plus")
+                        res = "Result: " + parseInt(lhs + rhs);
+                    if (op == "sub")
+                        res = "Result: " + parseInt(lhs - rhs);
+                    if (op == "mult")
+                        res = "Result: " + parseInt(lhs - rhs);
+                    if (op == "div"){
+                        if (rhs == 0)
+                            res = "It's over 9000!";
+                        else
+                            res = "Result: " + parseInt(lhs / rhs);
+                    }
+                    if (op == "mod"){
+                        if (rhs == 0)
+                            res = "It's over 9000!";
+                        else
+                            res = "Result: " + parseInt(lhs % rhs);
+                    }
+                    console.log(res);
+                    alert(res);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" name="lhs" id="lhs">
+    <select name="operator" id="operator">
+        <option value="plus">+</option>
+        <option value="sub">-</option>
+        <option value="mult">*</option>
+        <option value="div">/</option>
+        <option value="mod">%</option>
+    </select>
+    <input type="text" name="rhs" id="rhs">
+    <input type="submit" value="Try me!" id="calc">
+</body>
+</html>

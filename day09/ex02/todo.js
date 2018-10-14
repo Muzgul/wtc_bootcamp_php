@@ -1,36 +1,53 @@
-function setCookie(value) {
-    document.cookie = value;
+function setCookie(list){
+    document.cookie = JSON.stringify(list);
 }
-function getCookie() {
-    var value = document.cookie;
-    if (value)
-        return (value);
-    else
-        return (null);
+
+function getCookie(){
+    return JSON.parse(document.cookie);
 }
 
 function loadTodo(){
     var todolist = getCookie();
-    if (todolist != null){
-        todolist = JSON.parse(todolist);
+    if (todolist != null && todolist != ""){
+        var ft_list = document.getElementById("ft_list");
+        while (ft_list.firstChild)
+            ft_list.removeChild(ft_list.firstChild);
         todolist.forEach(element => {
-            alert(element);
+            var div = document.createElement('div');
+            div.className = 'ft_item';
+            div.innerHTML = element;
+            var button = document.createElement('button');
+            button.innerText = "X";
+            button.addEventListener('click', function (el){
+                var list = getCookie();
+                var newlist = [];
+                list.forEach(element => {
+                    if (element + "X" != el.path[1].innerText)
+                        newlist.push(element);
+                });
+                setCookie(newlist);
+                ft_list.removeChild(el.path[1]);
+                loadTodo();
+            });
+            div.appendChild(button);
+            ft_list.appendChild(div);
         });
-    }
+    }else
+        document.getElementById("ft_list").innerText = "List is empty!";
 }
 
 function addNew(){
-    var item = window.prompt("Enter new todo: ");
-    if (item != ""){
-        var todolist = getCookie("thetodolist");
-        if (todolist != null){
-            todolist = JSON.parse(todolist);
-        }else
-            todolist = [];
-        todolist.unshift(item);
-        todolist = JSON.stringify(todolist);
-        setCookie("thetodolist", todolist, 1);
-        alert("Cookie created!");
-        alert(getCookie("thetodolist"));
+    var item = window.prompt("Please enter new todo:");
+    if (item != null && item != ""){
+        var list = getCookie();
+        if (list != null && list != ""){
+            list.unshift(item);
+            setCookie(list);
+        }else{
+            var todolist = [];
+            todolist.push(item);
+            setCookie(todolist);
+        }
+        loadTodo();
     }
 }
